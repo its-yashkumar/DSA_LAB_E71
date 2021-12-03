@@ -9,6 +9,8 @@ void createstack(struct Mystack *);
 int isfull(struct Mystack *);
 void push(struct Mystack*,int);
 int peek(struct Mystack* );
+void pop(struct Mystack*);
+
 int main(){
    struct Mystack stack;
    int com,data,peekdata;
@@ -64,4 +66,7 @@ void push(struct Mystack* stack,int data){
 }
 int peek(struct Mystack* stack){
     return (stack->sptr)[stack->top];
+}
+void pop(struct Mystack* stack){
+    stack->top--;
 }
