@@ -13,5 +13,6 @@ int main(){
    createstack(&stack);
 }
 void createstack(struct Mystack* stack){
+    stack->top=-1;
     stack->sptr=(int *)calloc(stack->size,sizeof(struct Mystack));
 }
