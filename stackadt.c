@@ -10,10 +10,21 @@ int isfull(struct Mystack *);
 void push(struct Mystack*,int);
 int main(){
    struct Mystack stack;
+   int com;
    printf("Enter the value of size of stack :\n");
    scanf("%d",&stack.size);
    createstack(&stack);
-
+   printf("Enter the command to perform operations\nEnter 1 to push a element\n");
+   scanf("%d",&com);
+   switch (com)
+   {
+   case 1:
+   
+       break;
+   
+   default:
+       break;
+   }
 }
 void createstack(struct Mystack* stack){
     stack->top=-1;
@@ -24,4 +35,7 @@ int isfull(struct Mystack * stack){
         return 1;
     }
     else return 0;
+}
+void push(struct Mystack* stack,int data){
+  
 }
