@@ -8,14 +8,15 @@ struct Mystack{
 void createstack(struct Mystack *);
 int isfull(struct Mystack *);
 void push(struct Mystack*,int);
+int peek(struct Mystack* );
 int main(){
    struct Mystack stack;
-   int com,data;
+   int com,data,peekdata;
    printf("Enter the value of size of stack :\n");
    scanf("%d",&stack.size);
    createstack(&stack);
    while(1){
-   printf("Enter the command to perform operations\nEnter 1 to push a element\n");
+   printf("Enter the command to perform operations\nEnter 1 to push a element\nEnter 2 to peek\n");
    scanf("%d",&com);
    switch (com)
    {
@@ -24,6 +25,11 @@ int main(){
      scanf("%d",&data);
      push(&stack,data);
      break;
+   case 2:
+     peekdata=peek(&stack);
+     printf("the element at the top of array is : %d\n",peekdata);
+     break;
+
    
    default:
        break;
@@ -53,6 +59,9 @@ void push(struct Mystack* stack,int data){
    else{
        stack->top++;
        (stack->sptr)[stack->top]=data;
-       //printf()
+       printf("The element %d is pushed to top of stack\n",data);
    }
+}
+int peek(struct Mystack* stack){
+    return (stack->sptr)[stack->top];
 }
