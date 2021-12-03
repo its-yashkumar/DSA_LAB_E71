@@ -10,7 +10,7 @@ int isfull(struct Mystack *);
 void push(struct Mystack*,int);
 int main(){
    struct Mystack stack;
-   int com;
+   int com,data;
    printf("Enter the value of size of stack :\n");
    scanf("%d",&stack.size);
    createstack(&stack);
@@ -19,8 +19,9 @@ int main(){
    switch (com)
    {
    case 1:
-   
-       break;
+     printf("Enter element you want to push :\n");
+     scanf("%d",&data);
+     break;
    
    default:
        break;
@@ -28,7 +29,7 @@ int main(){
 }
 void createstack(struct Mystack* stack){
     stack->top=-1;
-    stack->sptr=(int *)calloc(stack->size,sizeof(struct Mystack));
+    stack->sptr=(int *)malloc(stack->size*sizeof(struct Mystack));
 }
 int isfull(struct Mystack * stack){
     if(stack->top==stack->size-1){
