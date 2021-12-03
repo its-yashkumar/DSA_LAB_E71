@@ -11,4 +11,8 @@ int main(){
    int n;
    printf("Enter the value of size of stack :\n");
    scanf("%d",&n);
+   createstack(&stack,n);
+}
+void createstack(struct Mystack* stack,int n){
+    stack->sptr=(int *)calloc(n,sizeof(struct Mystack));
 }
