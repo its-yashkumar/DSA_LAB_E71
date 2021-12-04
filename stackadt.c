@@ -31,7 +31,8 @@ int main(){
      peekdata=peek(&stack);
      printf("the element at the top of array is : %d\n",peekdata);
      break;
-
+   case 3:
+      pop(&stack);
    
    default:
        break;
