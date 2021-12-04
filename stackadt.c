@@ -7,6 +7,7 @@ struct Mystack{
 };
 void createstack(struct Mystack *);
 int isfull(struct Mystack *);
+int isempty(struct Mystack *);
 void push(struct Mystack*,int);
 int peek(struct Mystack* );
 void pop(struct Mystack*);
@@ -18,7 +19,7 @@ int main(){
    scanf("%d",&stack.size);
    createstack(&stack);
    while(1){
-   printf("Enter the command to perform operations\nEnter 1 to push a element\nEnter 2 to peek\n");
+   printf("Enter the command to perform operations\nEnter 1 to push a element\nEnter 2 to peek\n3 to pop element\n");
    scanf("%d",&com);
    switch (com)
    {
@@ -33,6 +34,7 @@ int main(){
      break;
    case 3:
       pop(&stack);
+      break;
    
    default:
        break;
@@ -69,5 +71,16 @@ int peek(struct Mystack* stack){
     return (stack->sptr)[stack->top];
 }
 void pop(struct Mystack* stack){
-    stack->top--;
+    int empty=isempty(stack);;
+    if(empty==1){
+        printf("The stack is underflowed and hence cannot pop");
+    }
+    else
+       stack->top--;
+}
+int isempty(struct Mystack * stack){
+    if(stack->top==-1){
+        return 1;
+    }
+    else return 0;
 }
