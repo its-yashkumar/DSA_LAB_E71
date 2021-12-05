@@ -9,6 +9,7 @@ void createarray(struct Arrayadt *);
 void getarray(struct Arrayadt *);
 void printarray(struct Arrayadt *);
 void insertindex(struct Arrayadt *,int,int);
+int insertend(struct Arrayadt *,int);
 
 int main(){
   struct Arrayadt arr;
@@ -36,6 +37,8 @@ int main(){
   case 2:
     printf("Enter element you want to insert :\n");
     scanf("%d",&ele);
+    insertend(&arr,ele);
+    printarray(&arr);
   default:
     break;
   }
@@ -65,4 +68,8 @@ void insertindex(struct Arrayadt * arr,int index,int ele){
     (arr->aptr)[index]=ele;
     arr->size++;
   }
+}
+int insertend(struct Arrayadt * arr,int ele){
+    (arr->aptr)[arr->size]=ele;
+    arr->size++;
 }
