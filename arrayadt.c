@@ -19,7 +19,17 @@ int main(){
   createarray(&arr);
   getarray(&arr);
   printarray(&arr);
-
+  printf("\nEnter the commands to perform operation on array \n");
+  scanf("%d",&com);
+  switch (com)
+  {
+  case 1:
+    
+    break;
+  
+  default:
+    break;
+  }
 }
 void createarray (struct Arrayadt * arr){
    arr->aptr=(int *)calloc(arr->capacity,sizeof(int));
