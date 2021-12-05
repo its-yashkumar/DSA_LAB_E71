@@ -29,6 +29,8 @@ int main(){
     scanf("%d",&ele);
     printf("Enter index at which you want to insert element :\n");
     scanf("%d",&index);
+    insertindex(&arr,index,ele);
+    printarray(&arr);
 
 
     break;
@@ -48,7 +50,17 @@ void getarray(struct Arrayadt * arr){
 }
 void printarray(struct Arrayadt * arr){
    for(int i=0;i<arr->size;i++){
-     printf("Enter %d element of array is : %d\n",i,(arr->aptr)[i]);
+     printf("The %d element of array is : %d\n",i,(arr->aptr)[i]);
    }
 }
-
+void insertindex(struct Arrayadt * arr,int index,int ele){
+  if(arr->size==arr->capacity){
+    printf("Array is full cannot enter more elemnts\n");
+  }
+  else{
+    for(int i=arr->size;i>=index;i--){
+      (arr->aptr)[i+1]= (arr->aptr)[i];
+    }
+    (arr->aptr)[index]=ele;
+  }
+}
