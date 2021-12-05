@@ -33,7 +33,9 @@ int main(){
     insertindex(&arr,index,ele);
     printarray(&arr);
     break;
-  
+  case 2:
+    printf("Enter element you want to insert :\n");
+    scanf("%d",&ele);
   default:
     break;
   }
