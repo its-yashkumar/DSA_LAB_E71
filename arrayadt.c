@@ -8,10 +8,11 @@ struct Arrayadt{
 void createarray(struct Arrayadt *);
 void getarray(struct Arrayadt *);
 void printarray(struct Arrayadt *);
+void insertindex(struct Arrayadt *,int,int);
 
 int main(){
   struct Arrayadt arr;
-  int com;
+  int com,index,ele;
   printf("Enter the capacity of the array \n");
   scanf("%d",&arr.capacity);
   printf("Enter the size of the array \n");
@@ -19,12 +20,17 @@ int main(){
   createarray(&arr);
   getarray(&arr);
   printarray(&arr);
-  printf("\nEnter the commands to perform operation on array \n");
+  printf("\nEnter the commands to perform operation on array \n1. to insert an element at given index\n");
   scanf("%d",&com);
   switch (com)
   {
   case 1:
-    
+    printf("Enter element you want to insert :\n");
+    scanf("%d",&ele);
+    printf("Enter index at which you want to insert element :\n");
+    scanf("%d",&index);
+
+
     break;
   
   default:
