@@ -5,13 +5,13 @@ struct Arrayadt{
   int size;
   int * aptr;
 };
+void createarray(struct Myarray*);
 int main(){
   struct Arrayadt arr;
-  int capacity,size;
   printf("Enter the capacity of the array");
-  scanf("%d",capacity);
+  scanf("%d",arr.capacity);
   printf("Enter the size of the array");
-  scanf("%d",size);
-
+  scanf("%d",arr.size);
+  
 
 }
