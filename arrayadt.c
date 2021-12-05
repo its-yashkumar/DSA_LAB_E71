@@ -11,6 +11,7 @@ void printarray(struct Arrayadt *);
 
 int main(){
   struct Arrayadt arr;
+  int com;
   printf("Enter the capacity of the array \n");
   scanf("%d",&arr.capacity);
   printf("Enter the size of the array \n");
@@ -34,3 +35,4 @@ void printarray(struct Arrayadt * arr){
      printf("Enter %d element of array is : %d\n",i,(arr->aptr)[i]);
    }
 }
+
