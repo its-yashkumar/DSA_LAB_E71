@@ -21,6 +21,7 @@ int main(){
   getarray(&arr);
   printarray(&arr);
   printf("\nEnter the commands to perform operation on array \n1. to insert an element at given index\n");
+  printf("2. To insert at end of array :");
   scanf("%d",&com);
   switch (com)
   {
@@ -31,8 +32,6 @@ int main(){
     scanf("%d",&index);
     insertindex(&arr,index,ele);
     printarray(&arr);
-
-
     break;
   
   default:
@@ -62,5 +61,6 @@ void insertindex(struct Arrayadt * arr,int index,int ele){
       (arr->aptr)[i+1]= (arr->aptr)[i];
     }
     (arr->aptr)[index]=ele;
+    arr->size++;
   }
 }
