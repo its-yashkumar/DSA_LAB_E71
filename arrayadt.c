@@ -10,10 +10,11 @@ void getarray(struct Arrayadt *);
 void printarray(struct Arrayadt *);
 void insertindex(struct Arrayadt *,int,int);
 int insertend(struct Arrayadt *,int);
+int sumelements(struct Arrayadt *);
 
 int main(){
   struct Arrayadt arr;
-  int com,index,ele;
+  int com,index,ele,sumele;
   printf("Enter the capacity of the array \n");
   scanf("%d",&arr.capacity);
   printf("Enter the size of the array \n");
@@ -22,7 +23,7 @@ int main(){
   getarray(&arr);
   printarray(&arr);
   printf("\nEnter the commands to perform operation on array \n1. to insert an element at given index\n");
-  printf("2. To insert at end of array :");
+  printf("2. To insert at end of array :\n3. To sum all elements of array");
   scanf("%d",&com);
   switch (com)
   {
@@ -39,6 +40,9 @@ int main(){
     scanf("%d",&ele);
     insertend(&arr,ele);
     printarray(&arr);
+    break;
+  case 3:
+    
   default:
     break;
   }
