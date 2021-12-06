@@ -9,6 +9,7 @@ void createarray(struct Arrayadt *);
 void getarray(struct Arrayadt *);
 void printarray(struct Arrayadt *);
 void insertindex(struct Arrayadt *,int,int);
+void delete(struct Arrayadt *,int);
 int insertend(struct Arrayadt *,int);
 int sumelements(struct Arrayadt *);
 float avgelements(struct Arrayadt *);
@@ -27,7 +28,7 @@ int main(){
   printarray(&arr);
   printf("\nEnter the commands to perform operation on array \n1. to insert an element at given index\n");
   printf("2. To insert at end of array :\n3. To sum all elements of array\n4. To find average of all elements in an array\n");
-  printf("5. For linear search \n6. For Binary Search");
+  printf("5. For linear search \n6. For Binary Search\n7 Delete an element from array\n");
   scanf("%d",&com);
   switch (com)
   {
@@ -75,6 +76,13 @@ int main(){
        printf("Element %d present at %d index of array",key,searchindex);
      }
      break;
+  case 7:
+      printf("Enter index at which you want to delete element :\n");
+      scanf("%d",&index);
+      delete(&arr,index);
+      printarray(&arr);
+
+
   default:
     break;
 
@@ -136,6 +144,7 @@ int linearsearch(struct Arrayadt * arr,int key){
   return -1;
 }
 int binarysearch(struct Arrayadt * arr,int key){
+
   int l=0;
   int r=arr->size;
   while (l <= r) {
@@ -148,4 +157,10 @@ int binarysearch(struct Arrayadt * arr,int key){
     r = m - 1;
   }
 return -1;
+}
+void delete(struct Arrayadt * arr,int index){
+    for(int i=index;i<(arr->size)-1;i++){
+      (arr->aptr)[i]=(arr->aptr)[i+1];
+    }
+    arr->size--;
 }
