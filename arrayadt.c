@@ -12,9 +12,11 @@ void insertindex(struct Arrayadt *,int,int);
 int insertend(struct Arrayadt *,int);
 int sumelements(struct Arrayadt *);
 float avgelements(struct Arrayadt *);
+int linearsearch(struct Arrayadt *,int);
+int binarysearch(struct Arrayadt *,int);
 int main(){
   struct Arrayadt arr;
-  int com,index,ele,sumele;
+  int com,index,ele,sumele,key,searchindex;
   float avg;
   printf("Enter the capacity of the array \n");
   scanf("%d",&arr.capacity);
@@ -25,6 +27,7 @@ int main(){
   printarray(&arr);
   printf("\nEnter the commands to perform operation on array \n1. to insert an element at given index\n");
   printf("2. To insert at end of array :\n3. To sum all elements of array\n4. To find average of all elements in an array\n");
+  printf("5. For linear search \n6. For Binary Search");
   scanf("%d",&com);
   switch (com)
   {
@@ -49,8 +52,32 @@ int main(){
   case 4:
      avg=avgelements(&arr);
      printf("The average of all elements of array is : %.2f\n",avg);
+     break;
+  case 5:
+     printf("Enter element you want to search\n");
+     scanf("%d",&key);
+     searchindex=linearsearch(&arr,key);
+     if(searchindex==-1){
+       printf("Element not present in array");
+     }
+     else if(searchindex>=0){
+       printf("Element %d present at %d index of array",key,searchindex);
+     }
+     break;
+  case 6:
+     printf("Enter element you want to search\n");
+     scanf("%d",&key);
+     searchindex=binarysearch(&arr,key);
+     if(searchindex==-1){
+       printf("Element not present in array");
+     }
+     else if(searchindex>=0){
+       printf("Element %d present at %d index of array",key,searchindex);
+     }
+     break;
   default:
     break;
+
   }
 }
 void createarray (struct Arrayadt * arr){
@@ -97,4 +124,14 @@ float avgelements(struct Arrayadt * arr){
     sumele+= (arr->aptr)[i];
    }
    return ((sumele)/(arr->size));
+}
+int linearsearch(struct Arrayadt * arr,int key){
+  int flag;
+    for(int i=0;i<arr->size;i++){
+           if(arr->aptr[i]==key){
+               return i;
+           }
+           else continue;
+       }
+  return -1;
 }
