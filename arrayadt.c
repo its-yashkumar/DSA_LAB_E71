@@ -11,7 +11,7 @@ void printarray(struct Arrayadt *);
 void insertindex(struct Arrayadt *,int,int);
 int insertend(struct Arrayadt *,int);
 int sumelements(struct Arrayadt *);
-
+int avgelements(struct Arrayadt *);
 int main(){
   struct Arrayadt arr;
   int com,index,ele,sumele;
@@ -23,7 +23,7 @@ int main(){
   getarray(&arr);
   printarray(&arr);
   printf("\nEnter the commands to perform operation on array \n1. to insert an element at given index\n");
-  printf("2. To insert at end of array :\n3. To sum all elements of array\n");
+  printf("2. To insert at end of array :\n3. To sum all elements of array\n4. To find average of all elements in an array\n");
   scanf("%d",&com);
   switch (com)
   {
@@ -44,6 +44,8 @@ int main(){
   case 3:
     sumele=sumelements(&arr);
     printf("The sum of all elements of array is : %d\n",sumele);
+    break;
+  case 4:
     
   default:
     break;
