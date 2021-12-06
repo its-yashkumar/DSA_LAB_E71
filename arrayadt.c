@@ -14,7 +14,7 @@ int sumelements(struct Arrayadt *);
 int avgelements(struct Arrayadt *);
 int main(){
   struct Arrayadt arr;
-  int com,index,ele,sumele;
+  int com,index,ele,sumele,avg;
   printf("Enter the capacity of the array \n");
   scanf("%d",&arr.capacity);
   printf("Enter the size of the array \n");
@@ -46,7 +46,8 @@ int main(){
     printf("The sum of all elements of array is : %d\n",sumele);
     break;
   case 4:
-    
+     avg=avgelements(&arr);
+     ("The average of all elements of array is : %d\n",avg);
   default:
     break;
   }
