@@ -15,8 +15,9 @@ int sumelements(struct Arrayadt *);
 float avgelements(struct Arrayadt *);
 int linearsearch(struct Arrayadt *,int);
 int binarysearch(struct Arrayadt *,int);
+void mergearray(struct Arrayadt *,struct Arrayadt *,struct Arrayadt *);
 int main(){
-  struct Arrayadt arr;
+  struct Arrayadt arr,arr2,arr3;
   int com,index,ele,sumele,key,searchindex;
   float avg;
   printf("Enter the capacity of the array \n");
@@ -28,7 +29,8 @@ int main(){
   printarray(&arr);
   printf("\nEnter the commands to perform operation on array \n1. to insert an element at given index\n");
   printf("2. To insert at end of array :\n3. To sum all elements of array\n4. To find average of all elements in an array\n");
-  printf("5. For linear search \n6. For Binary Search\n7 Delete an element from array\n");
+  printf("5. For linear search \n6. For Binary Search\n7. Delete an element from array\n");
+  printf("8.To merge two arrays\n");
   scanf("%d",&com);
   switch (com)
   {
@@ -81,8 +83,17 @@ int main(){
       scanf("%d",&index);
       delete(&arr,index);
       printarray(&arr);
-
-
+  case 8:
+      printf("Enter the capacity of the array 2 \n");
+      scanf("%d",&arr2.capacity);
+      printf("Enter the size of the array 2 \n");
+      scanf("%d",&arr2.size);
+      createarray(&arr2);
+      getarray(&arr2);
+      printarray(&arr2);
+      mergearray(&arr,&arr2,&arr3);
+      printarray(&arr2);
+      break;
   default:
     break;
 
@@ -159,8 +170,20 @@ int binarysearch(struct Arrayadt * arr,int key){
 return -1;
 }
 void delete(struct Arrayadt * arr,int index){
+
     for(int i=index;i<(arr->size)-1;i++){
       (arr->aptr)[i]=(arr->aptr)[i+1];
     }
     arr->size--;
+}
+void mergearray(struct Arrayadt * arr1,struct Arrayadt * arr2,struct Arrayadt * arr3){
+  arr3->size=arr1->size+arr2->size;
+   arr3->aptr=(int *)calloc((arr1->size+arr2->size),sizeof(int));
+   int i;
+   for(i=0;i<arr1->size;i++){
+    (arr3->aptr)[i]=(arr1->aptr)[i];
+   }
+   for(int j=arr1->size;j<=arr2->size;j++){
+     (arr3->aptr)[i]=(arr2->aptr)[j];
+   }
 }
