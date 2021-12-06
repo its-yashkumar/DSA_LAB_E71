@@ -11,10 +11,11 @@ void printarray(struct Arrayadt *);
 void insertindex(struct Arrayadt *,int,int);
 int insertend(struct Arrayadt *,int);
 int sumelements(struct Arrayadt *);
-int avgelements(struct Arrayadt *);
+float avgelements(struct Arrayadt *);
 int main(){
   struct Arrayadt arr;
-  int com,index,ele,sumele,avg;
+  int com,index,ele,sumele;
+  float avg;
   printf("Enter the capacity of the array \n");
   scanf("%d",&arr.capacity);
   printf("Enter the size of the array \n");
@@ -47,7 +48,7 @@ int main(){
     break;
   case 4:
      avg=avgelements(&arr);
-     ("The average of all elements of array is : %d\n",avg);
+     printf("The average of all elements of array is : %.2f\n",avg);
   default:
     break;
   }
@@ -83,9 +84,17 @@ int insertend(struct Arrayadt * arr,int ele){
     arr->size++;
 }
 int sumelements(struct Arrayadt * arr){
+
    int sumele=0;
    for(int i=0;i<arr->size;i++){
     sumele+= (arr->aptr)[i];
    }
    return sumele;
+}
+float avgelements(struct Arrayadt * arr){
+   float sumele=0;
+   for(int i=0;i<arr->size;i++){
+    sumele+= (arr->aptr)[i];
+   }
+   return ((sumele)/(arr->size));
 }
