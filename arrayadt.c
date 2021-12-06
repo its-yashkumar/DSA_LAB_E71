@@ -135,3 +135,17 @@ int linearsearch(struct Arrayadt * arr,int key){
        }
   return -1;
 }
+int binarysearch(struct Arrayadt * arr,int key){
+  int l=0;
+  int r=arr->size;
+  while (l <= r) {
+     int m = l + (r - l) / 2;
+     if (arr->aptr[m] == key)
+       return m;
+     if (arr->aptr[m] < key)
+        l = m + 1;
+     else
+    r = m - 1;
+  }
+return -1;
+}
