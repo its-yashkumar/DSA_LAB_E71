@@ -23,7 +23,7 @@ int main(){
   getarray(&arr);
   printarray(&arr);
   printf("\nEnter the commands to perform operation on array \n1. to insert an element at given index\n");
-  printf("2. To insert at end of array :\n3. To sum all elements of array");
+  printf("2. To insert at end of array :\n3. To sum all elements of array\n");
   scanf("%d",&com);
   switch (com)
   {
@@ -42,6 +42,8 @@ int main(){
     printarray(&arr);
     break;
   case 3:
+    sumele=sumelements(&arr);
+    printf("The sum of all elements of array is : %d\n",sumele);
     
   default:
     break;
@@ -76,4 +78,11 @@ void insertindex(struct Arrayadt * arr,int index,int ele){
 int insertend(struct Arrayadt * arr,int ele){
     (arr->aptr)[arr->size]=ele;
     arr->size++;
+}
+int sumelements(struct Arrayadt * arr){
+   int sumele=0;
+   for(int i=0;i<arr->size;i++){
+    sumele+= (arr->aptr)[i];
+   }
+   return sumele;
 }
