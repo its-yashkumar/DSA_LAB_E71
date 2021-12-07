@@ -18,6 +18,7 @@ int binarysearch(struct Arrayadt *,int);
 void mergearray(struct Arrayadt *,struct Arrayadt *,struct Arrayadt *);
 int getmax(struct Arrayadt *);
 int getmin(struct Arrayadt *);
+void intersection(struct Arrayadt *,struct Arrayadt *);
 int main(){
   struct Arrayadt arr,arr2, arr3;
   int com,index,ele,sumele,key,searchindex,max,min;
@@ -33,6 +34,7 @@ int main(){
   printf("2. To insert at end of array :\n3. To sum all elements of array\n4. To find average of all elements in an array\n");
   printf("5. For linear search \n6. For Binary Search\n7. Delete an element from array\n");
   printf("8.To merge two arrays\n9. To get max element of array\n10. To get min elemnt of array\n");
+  printf("11. To intersection of two arrays\n ");
   scanf("%d",&com);
   switch (com)
   {
@@ -104,7 +106,20 @@ int main(){
   case 10:
      min=getmin(&arr);
      printf("The min element of array is : %d\n",min);
+     break;
+  case 11:
+      printf("Enter the capacity of the array 2 \n");
+      scanf("%d",&arr2.capacity);
+      printf("Enter the size of the array 2 \n");
+      scanf("%d",&arr2.size);
+      createarray(&arr2);
+      getarray(&arr2);
+      printf("The elements of second array is :\n ");
+      printarray(&arr2);
+      intersection(&arr,&arr2);
+      break;
   default:
+     printf("Enter valid command");
     break;
 
   }
@@ -216,6 +231,7 @@ int getmax(struct Arrayadt * a){
     return max;
 }
 int getmin(struct Arrayadt * a){
+
   int min, i;
     min = a->aptr[0];
     for(i=1;i<a->capacity;i++){
@@ -224,4 +240,22 @@ int getmin(struct Arrayadt * a){
         }
     }
     return min;
+}
+void intersection(struct Arrayadt * a1,struct Arrayadt * a2){
+  int i,j,flag;
+for(i = 0;i < a1->size;i++)
+{
+   for(j = 0;j < a2->size;j++)
+   {
+      if(a2->aptr[i] == a1->aptr[j])
+      {
+         flag = 1;
+      }
+    }
+     if(flag == 1)
+    {
+    printf("%d ", a2->aptr[i]);
+     }
+  flag = 0;
+  }
 }
