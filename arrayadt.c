@@ -17,7 +17,7 @@ int linearsearch(struct Arrayadt *,int);
 int binarysearch(struct Arrayadt *,int);
 void mergearray(struct Arrayadt *,struct Arrayadt *,struct Arrayadt *);
 int main(){
-  struct Arrayadt arr,arr2,arr3;
+  struct Arrayadt arr,arr2, arr3;
   int com,index,ele,sumele,key,searchindex;
   float avg;
   printf("Enter the capacity of the array \n");
@@ -92,7 +92,8 @@ int main(){
       getarray(&arr2);
       printarray(&arr2);
       mergearray(&arr,&arr2,&arr3);
-      printarray(&arr2);
+      printf("\n After merger :\n");
+      printarray(&arr3);
       break;
   default:
     break;
@@ -176,14 +177,19 @@ void delete(struct Arrayadt * arr,int index){
     }
     arr->size--;
 }
-void mergearray(struct Arrayadt * arr1,struct Arrayadt * arr2,struct Arrayadt * arr3){
-  arr3->size=arr1->size+arr2->size;
-   arr3->aptr=(int *)calloc((arr1->size+arr2->size),sizeof(int));
-   int i;
-   for(i=0;i<arr1->size;i++){
-    (arr3->aptr)[i]=(arr1->aptr)[i];
-   }
-   for(int j=arr1->size;j<=arr2->size;j++){
-     (arr3->aptr)[i]=(arr2->aptr)[j];
-   }
+void mergearray(struct Arrayadt * a1,struct Arrayadt * a2,struct Arrayadt * a3){
+    int i=0,j=0,k=0;
+    a3->size = a1->size + a2 -> size;
+    a3->capacity = a1->capacity + a2->capacity;
+    a3->aptr=(int *)calloc((a3->capacity),sizeof(struct Arrayadt));
+    for(i=0; i<a1->size; i++)
+    {
+        a3->aptr[i] = a1->aptr[i];
+    }
+    k = i;
+    for(i=0; i<a2->size; i++)
+    {
+        a3->aptr[k] = a2->aptr[i];
+        k++;
+    }
 }
