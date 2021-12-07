@@ -22,6 +22,7 @@ void intersection(struct Arrayadt *,struct Arrayadt *);
 void reverseother(struct Arrayadt *);
 void reversesame(struct Arrayadt *);
 void insertsorted(struct Arrayadt *,int);
+int issorted(struct Arrayadt *);
 
 int main(){
   struct Arrayadt arr,arr2, arr3;
@@ -39,7 +40,7 @@ int main(){
   printf("5. For linear search \n6. For Binary Search\n7. Delete an element from array\n");
   printf("8.To merge two arrays\n9. To get max element of array\n10. To get min elemnt of array\n");
   printf("11. To intersection of two arrays\n12. To reverse using another array\n13. To reverse using same array\n");
-  printf("14. To insert in a sorted array\n");
+  printf("14. To insert in a sorted array\n15.To check if array is sorted or not\n");
   scanf("%d",&com);
   switch (com)
   {
@@ -140,7 +141,15 @@ int main(){
      printf("After Insertion in sorted array\n");
      printarray(&arr);
      break;
-      
+  case 15:
+     key=issorted(&arr);
+     if(key==0){
+       printf("The array is not sorted\n");
+     }
+     else{
+       printf("The array is sorted\n");
+     }
+    break;
   default:
      printf("Enter valid command");
     break;
@@ -311,4 +320,11 @@ void insertsorted(struct Arrayadt * a,int key){
     a->aptr[i+1] = key;
     a->size++;
     }
+}
+int issorted(struct Arrayadt * a){
+  int i;
+    for(i=0;i<a->size-1;i++){
+        if(a->aptr[i]>a->aptr[i+1]) return 0;
+    }
+    return 1;
 }
