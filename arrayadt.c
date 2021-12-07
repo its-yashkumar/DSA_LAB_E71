@@ -19,6 +19,7 @@ void mergearray(struct Arrayadt *,struct Arrayadt *,struct Arrayadt *);
 int getmax(struct Arrayadt *);
 int getmin(struct Arrayadt *);
 void intersection(struct Arrayadt *,struct Arrayadt *);
+void reverseother(struct Arrayadt *);
 int main(){
   struct Arrayadt arr,arr2, arr3;
   int com,index,ele,sumele,key,searchindex,max,min;
@@ -34,7 +35,7 @@ int main(){
   printf("2. To insert at end of array :\n3. To sum all elements of array\n4. To find average of all elements in an array\n");
   printf("5. For linear search \n6. For Binary Search\n7. Delete an element from array\n");
   printf("8.To merge two arrays\n9. To get max element of array\n10. To get min elemnt of array\n");
-  printf("11. To intersection of two arrays\n ");
+  printf("11. To intersection of two arrays\n12. To reverse using another array\n");
   scanf("%d",&com);
   switch (com)
   {
@@ -117,6 +118,11 @@ int main(){
       printf("The elements of second array is :\n ");
       printarray(&arr2);
       intersection(&arr,&arr2);
+      break;
+  case 12:
+      reverseother(&arr);
+      printf("After reverse using another array\n");
+      printarray(&arr);
       break;
   default:
      printf("Enter valid command");
@@ -258,4 +264,15 @@ for(i = 0;i < a1->size;i++)
      }
   flag = 0;
   }
+}
+void reverseother(struct Arrayadt * a){
+  int *b,i,j;
+    b = (int*)calloc(a->size,sizeof(int));
+    for(i=a->size-1,j=0;i>=0;i--,j++){
+        b[j] = a->aptr[i];
+    }
+    for(i=0;i<a->size;i++){
+        a->aptr[i] = b[i];
+    }
+    free(b);
 }
