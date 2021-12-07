@@ -16,9 +16,11 @@ float avgelements(struct Arrayadt *);
 int linearsearch(struct Arrayadt *,int);
 int binarysearch(struct Arrayadt *,int);
 void mergearray(struct Arrayadt *,struct Arrayadt *,struct Arrayadt *);
+int getmax(struct Arrayadt *);
+int getmin(struct Arrayadt *);
 int main(){
   struct Arrayadt arr,arr2, arr3;
-  int com,index,ele,sumele,key,searchindex;
+  int com,index,ele,sumele,key,searchindex,max,min;
   float avg;
   printf("Enter the capacity of the array \n");
   scanf("%d",&arr.capacity);
@@ -30,7 +32,7 @@ int main(){
   printf("\nEnter the commands to perform operation on array \n1. to insert an element at given index\n");
   printf("2. To insert at end of array :\n3. To sum all elements of array\n4. To find average of all elements in an array\n");
   printf("5. For linear search \n6. For Binary Search\n7. Delete an element from array\n");
-  printf("8.To merge two arrays\n");
+  printf("8.To merge two arrays\n9. To get max element of array\n10. To get min elemnt of array\n");
   scanf("%d",&com);
   switch (com)
   {
@@ -95,6 +97,13 @@ int main(){
       printf("\n After merger :\n");
       printarray(&arr3);
       break;
+  case 9: 
+     max=getmax(&arr);
+     printf("The max element of array is : %d\n",max);
+     break;
+  case 10:
+     min=getmin(&arr);
+     printf("The min element of array is : %d\n",min);
   default:
     break;
 
@@ -192,4 +201,27 @@ void mergearray(struct Arrayadt * a1,struct Arrayadt * a2,struct Arrayadt * a3){
         a3->aptr[k] = a2->aptr[i];
         k++;
     }
+}
+int getmax(struct Arrayadt * a){
+
+   int max;
+    max=a->aptr[0];
+    for(int i=1;i<a->capacity;i++){
+        if (max<a->aptr[i])
+        {
+            max = a->aptr[i];
+        }
+        
+    }
+    return max;
+}
+int getmin(struct Arrayadt * a){
+  int min, i;
+    min = a->aptr[0];
+    for(i=1;i<a->capacity;i++){
+        if(min>a->aptr[i]){
+            min = a->aptr[i];
+        }
+    }
+    return min;
 }
