@@ -22,9 +22,15 @@ int main(){
    cout<<"Enter Commands to perform following operations"<<endl;
    cout<<"1. To enqueue from front "<<endl;
    cin>>com;
+   while(1){
    if(com==1){
        enqueue_rear(&deq);
        getrear(&deq);
+   }
+   cin>>com;
+   if(com==-1){
+       break;
+   }
    }
 
 }
