@@ -12,5 +12,12 @@ void createdequeue(struct Dequeue *);
 
 int main(){
    struct Dequeue deq;
+   createdequeue(&deq);
 
+}
+void createdequeue(struct Dequeue * deq){
+     deq->capacity=30;
+     deq->front=-1;
+     deq->rear=-1;
+     deq->dptr=(int *)calloc(deq->capacity,sizeof(int));
 }
