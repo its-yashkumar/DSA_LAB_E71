@@ -11,6 +11,7 @@ struct Dequeue
 void createdequeue(struct Dequeue *);
 int getfront(struct Dequeue *);
 int getrear(struct Dequeue *);
+int isoverflow(struct Dequeue *);
 
 int main(){
    struct Dequeue deq;
@@ -28,4 +29,10 @@ int getfront(struct Dequeue * deq){
 }
 int getrear(struct Dequeue * deq){
      return (deq->dptr)[deq->rear];
+}
+int isoverflow(struct Dequeue * deq){
+    if((deq->front==0 && deq->rear==deq->capacity-1) || deq->front==deq->rear+1){
+    return 1;
+    }
+    else return 0;
 }
