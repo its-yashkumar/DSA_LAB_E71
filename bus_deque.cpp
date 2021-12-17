@@ -6,7 +6,7 @@ struct Dequeue
    int capacity;
    int front;
    int rear;
-   int* dptr;
+   int * dptr;
 };
 void createdequeue(struct Dequeue *);
 int getfront(struct Dequeue *);
@@ -14,6 +14,7 @@ int getrear(struct Dequeue *);
 int isoverflow(struct Dequeue *);
 int isunderflow(struct Dequeue *);
 void enqueue_rear(struct Dequeue *);
+void dequeue_rear(struct Dequeue *);
 
 int main(){
    struct Dequeue deq;
@@ -21,12 +22,17 @@ int main(){
    createdequeue(&deq);
    cout<<"Enter Commands to perform following operations"<<endl;
    cout<<"1. To enqueue from rear "<<endl;
+   cout<<"2. To dequeue from rear "<<endl;
    cin>>com;
    while(1){
    if(com==1){
        enqueue_rear(&deq);
        getrear(&deq);
    }
+   if(com==2){
+
+   }
+   cout<<endl;
    cin>>com;
    if(com==-1){
        break;
@@ -42,12 +48,12 @@ void createdequeue(struct Dequeue * deq){
 }
 int getrear(struct Dequeue * deq){
      cout<<"The value of rear is : "<<deq->rear<<endl;
-     cout<<"The value at rear is :"<<(deq->dptr)[deq->front];
+     cout<<"The value at rear is : "<<(deq->dptr)[deq->front];
      return (deq->dptr)[deq->front];
 }
 int getfront(struct Dequeue * deq){
      cout<<"The value of front is : "<<deq->front<<endl;
-     cout<<"The value at front is"<<(deq->dptr)[deq->rear]<<endl;
+     cout<<"The value at front is : "<<(deq->dptr)[deq->rear]<<endl;
      return (deq->dptr)[deq->rear];
 }
 int isoverflow(struct Dequeue * deq){
@@ -77,5 +83,20 @@ void enqueue_rear(struct Dequeue * deq){
     else{
         deq->rear++;
         (deq->dptr)[deq->rear]=1;
+    }
+}
+void dequeue_rear(struct Dequeue * deq){
+    if(isunderflow(deq)){
+        cout<<"The queue is empty cannot remove elements"<<endl;
+    }
+    else if(deq->front==deq->rear){
+        deq->front==-1;
+        deq->rear==-1;
+    }
+    else if(deq->rear==0){
+        deq->rear=deq->capacity-1;
+    }
+    else{
+        deq->rear--;
     }
 }
