@@ -17,9 +17,15 @@ void enqueue_rear(struct Dequeue *);
 
 int main(){
    struct Dequeue deq;
+   int com;
    createdequeue(&deq);
    cout<<"Enter Commands to perform following operations"<<endl;
-
+   cout<<"1. To enqueue from front "<<endl;
+   cin>>com;
+   if(com==1){
+       enqueue_rear(&deq);
+       getrear(&deq);
+   }
 
 }
 void createdequeue(struct Dequeue * deq){
@@ -29,11 +35,13 @@ void createdequeue(struct Dequeue * deq){
      deq->dptr=(int *)calloc(deq->capacity,sizeof(int));
 }
 int getfront(struct Dequeue * deq){
-     cout<<(deq->dptr)[deq->front];
+     cout<<"The value of rear is : "<<deq->rear<<endl;
+     cout<<"The value at rear is :"<<(deq->dptr)[deq->front];
      return (deq->dptr)[deq->front];
 }
 int getrear(struct Dequeue * deq){
-     cout<<(deq->dptr)[deq->rear];
+     cout<<"The value of front is : "<<deq->front<<endl;
+     cout<<"The value at front is"<<(deq->dptr)[deq->rear]<<endl;
      return (deq->dptr)[deq->rear];
 }
 int isoverflow(struct Dequeue * deq){
