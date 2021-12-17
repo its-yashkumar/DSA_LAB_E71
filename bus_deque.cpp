@@ -20,7 +20,7 @@ int main(){
    int com;
    createdequeue(&deq);
    cout<<"Enter Commands to perform following operations"<<endl;
-   cout<<"1. To enqueue from front "<<endl;
+   cout<<"1. To enqueue from rear "<<endl;
    cin>>com;
    while(1){
    if(com==1){
@@ -40,12 +40,12 @@ void createdequeue(struct Dequeue * deq){
      deq->rear=-1;
      deq->dptr=(int *)calloc(deq->capacity,sizeof(int));
 }
-int getfront(struct Dequeue * deq){
+int getrear(struct Dequeue * deq){
      cout<<"The value of rear is : "<<deq->rear<<endl;
      cout<<"The value at rear is :"<<(deq->dptr)[deq->front];
      return (deq->dptr)[deq->front];
 }
-int getrear(struct Dequeue * deq){
+int getfront(struct Dequeue * deq){
      cout<<"The value of front is : "<<deq->front<<endl;
      cout<<"The value at front is"<<(deq->dptr)[deq->rear]<<endl;
      return (deq->dptr)[deq->rear];
