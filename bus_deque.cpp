@@ -9,6 +9,8 @@ struct Dequeue
    int* dptr;
 };
 void createdequeue(struct Dequeue *);
+int getfront(struct Dequeue *);
+int getrear(struct Dequeue *);
 
 int main(){
    struct Dequeue deq;
@@ -20,4 +22,10 @@ void createdequeue(struct Dequeue * deq){
      deq->front=-1;
      deq->rear=-1;
      deq->dptr=(int *)calloc(deq->capacity,sizeof(int));
+}
+int getfront(struct Dequeue * deq){
+     return (deq->dptr)[deq->front];
+}
+int getrear(struct Dequeue * deq){
+     return (deq->dptr)[deq->rear];
 }
