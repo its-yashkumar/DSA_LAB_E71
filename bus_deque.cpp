@@ -12,6 +12,7 @@ void createdequeue(struct Dequeue *);
 int getfront(struct Dequeue *);
 int getrear(struct Dequeue *);
 int isoverflow(struct Dequeue *);
+int isunderflow(struct Dequeue *);
 
 int main(){
    struct Dequeue deq;
