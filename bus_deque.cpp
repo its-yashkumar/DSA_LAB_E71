@@ -36,3 +36,9 @@ int isoverflow(struct Dequeue * deq){
     }
     else return 0;
 }
+int isunderflow(struct Dequeue * deq){
+    if((deq->front==-1) && (deq->rear==-1)){
+        return 1;
+    }
+    else return 0;
+}
