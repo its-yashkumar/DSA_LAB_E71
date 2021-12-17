@@ -15,6 +15,8 @@ int isoverflow(struct Dequeue *);
 int isunderflow(struct Dequeue *);
 void enqueue_rear(struct Dequeue *);
 void dequeue_rear(struct Dequeue *);
+void dequeue_front(struct Dequeue *);
+
 
 int main(){
    struct Dequeue deq;
@@ -87,7 +89,7 @@ void enqueue_rear(struct Dequeue * deq){
 }
 void dequeue_rear(struct Dequeue * deq){
     if(isunderflow(deq)){
-        cout<<"The queue is empty cannot remove elements"<<endl;
+        cout<<"The queue is empty cannot remove elements i.e. no passenger"<<endl;
     }
     else if(deq->front==deq->rear){
         deq->front==-1;
@@ -98,5 +100,20 @@ void dequeue_rear(struct Dequeue * deq){
     }
     else{
         deq->rear--;
+    }
+}
+void dequeue_front(struct Dequeue * deq){
+    if(isunderflow(deq)){
+        cout<<"The queue is empty cannot remove elements i.e. no passenger"<<endl;
+    }
+    else if(deq->front==deq->rear){
+        deq->front==-1;
+        deq->rear==-1;
+    }
+    else if(deq->front==deq->capacity-1){
+        deq->front==0;
+    }
+    else{
+        deq->front--;
     }
 }
