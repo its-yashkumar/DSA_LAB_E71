@@ -16,6 +16,7 @@ int isunderflow(struct Dequeue *);
 void enqueue_rear(struct Dequeue *);
 void dequeue_rear(struct Dequeue *);
 void dequeue_front(struct Dequeue *);
+void display(struct Dequeue *);
 
 
 int main(){
@@ -25,14 +26,20 @@ int main(){
    cout<<"Enter Commands to perform following operations"<<endl;
    cout<<"1. To enqueue from rear "<<endl;
    cout<<"2. To dequeue from rear "<<endl;
+   cout<<"3. To dequeue from front "<<endl;
    cin>>com;
    while(1){
    if(com==1){
        enqueue_rear(&deq);
-       getrear(&deq);
+       display(&deq);
    }
-   if(com==2){
-
+   else if(com==2){
+       dequeue_rear(&deq);
+       display(&deq);
+   }
+   else if(com==3){
+       dequeue_front(&deq);
+       display(&deq);
    }
    cout<<endl;
    cin>>com;
@@ -115,5 +122,10 @@ void dequeue_front(struct Dequeue * deq){
     }
     else{
         deq->front--;
+    }
+}
+void display(struct Dequeue * deq){
+    for(int i=0;i<deq->capacity;i++){
+        cout<<(deq->dptr)[i];
     }
 }
