@@ -1,10 +1,9 @@
-// C++ program to evaluate value of a postfix expression
+
 #include <iostream>
 #include <string.h>
 
 using namespace std;
 
-// Stack type
 struct Stack
 {
 	int top;
@@ -79,7 +78,7 @@ int evaluatePostfix(char* exp)
 
 int main()
 {
-	char exp[] = "231*+9-";
+	char exp[] = "15*7-45+";
 	cout<<"postfix evaluation: "<< evaluatePostfix(exp);
 	return 0;
 }
