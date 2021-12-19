@@ -10,7 +10,7 @@ int isfull(struct Mystack *);
 int isempty(struct Mystack *);
 void push(struct Mystack*,int);
 int peek(struct Mystack* );
-void pop(struct Mystack*);
+int pop(struct Mystack*);
 
 int main(){
    struct Mystack stack;
@@ -70,13 +70,16 @@ void push(struct Mystack* stack,int data){
 int peek(struct Mystack* stack){
     return (stack->sptr)[stack->top];
 }
-void pop(struct Mystack* stack){
+int pop(struct Mystack* stack){
     int empty=isempty(stack);;
     if(empty==1){
         printf("The stack is underflowed and hence cannot pop");
     }
-    else
+    else{
+       int val=(stack->sptr)[stack->top];
        stack->top--;
+       return val;
+    }
 }
 int isempty(struct Mystack * stack){
     if(stack->top==-1){
