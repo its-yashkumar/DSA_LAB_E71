@@ -9,12 +9,12 @@ void createstack(struct Mystack *);
 int isfull(struct Mystack *);
 int isempty(struct Mystack *);
 void push(struct Mystack*,int);
-int peek(struct Mystack* );
+int peek(struct Mystack* ,int);
 int pop(struct Mystack*);
 
 int main(){
    struct Mystack stack;
-   int com,data,peekdata;
+   int com,data,peekdata,index;
    printf("Enter the value of size of stack :\n");
    scanf("%d",&stack.size);
    createstack(&stack);
@@ -29,17 +29,20 @@ int main(){
      push(&stack,data);
      break;
    case 2:
-     peekdata=peek(&stack);
-     printf("the element at the top of array is : %d\n",peekdata);
+     printf("Enter index whose value you want to peek from top\n");
+     scanf("%d",&index);
+     peekdata=peek(&stack,index);
+     printf("The element at the %d down of stack is : %d\n",index,peekdata);
      break;
    case 3:
-      pop(&stack);
+      data=pop(&stack);
+      printf("The popped data is : %d\n",data);
       break;
    
    default:
        break;
    }
-   printf("Enter -1 to exit else enter another command\n");
+   printf("\nEnter -1 to exit else enter another command\n");
    if(com==-1){
        break;
    }
@@ -67,8 +70,8 @@ void push(struct Mystack* stack,int data){
        printf("The element %d is pushed to top of stack\n",data);
    }
 }
-int peek(struct Mystack* stack){
-    return (stack->sptr)[stack->top];
+int peek(struct Mystack* stack,int index){
+    return (stack->sptr)[((stack->top)-index)];
 }
 int pop(struct Mystack* stack){
     int empty=isempty(stack);;
