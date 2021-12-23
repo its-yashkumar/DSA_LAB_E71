@@ -6,7 +6,7 @@ struct Dequeue
    int capacity;
    int front;
    int rear;
-   int * dptr;
+   char * dptr;
 };
 void createdequeue(struct Dequeue *);
 int getfront(struct Dequeue *);
@@ -53,7 +53,7 @@ void createdequeue(struct Dequeue * deq){
      deq->capacity=30;
      deq->front=-1;
      deq->rear=-1;
-     deq->dptr=(int *)calloc(deq->capacity,sizeof(int));
+     deq->dptr=(char *)calloc(deq->capacity,sizeof(char));
 }
 int getrear(struct Dequeue * deq){
      cout<<"The value of rear is : "<<deq->rear<<endl;
@@ -83,15 +83,15 @@ void enqueue_rear(struct Dequeue * deq){
     }
     else if(isunderflow(deq)){
         deq->front=deq->rear=0;
-        (deq->dptr)[deq->rear]=1;
+        (deq->dptr)[deq->rear]='A';
     }
     else if(deq->rear==deq->capacity-1){
         deq->rear=0;
-        (deq->dptr)[deq->rear]=1;
+        (deq->dptr)[deq->rear]='F';
     }
     else{
         deq->rear++;
-        (deq->dptr)[deq->rear]=1;
+        (deq->dptr)[deq->rear]='B';
     }
 }
 void dequeue_rear(struct Dequeue * deq){
@@ -125,7 +125,13 @@ void dequeue_front(struct Dequeue * deq){
     }
 }
 void display(struct Dequeue * deq){
-    for(int i=0;i<deq->capacity;i++){
+    int i=deq->front;
+    cout<<"Elements of dequeue\n";
+    while (i != deq->rear)
+    {
         cout<<(deq->dptr)[i];
+        i=(i+1)%deq->capacity;
     }
+    cout<<(deq->dptr)[deq->rear];
+    
 }
