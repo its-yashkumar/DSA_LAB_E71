@@ -172,9 +172,5 @@ int main()
     InfixToPostfix(infix,prefix);   
     puts(strrev(prefix));      
     } 
-    else{
-        printf("Invalid Command");
-    }       
-
-	return 0;
+   
 }
