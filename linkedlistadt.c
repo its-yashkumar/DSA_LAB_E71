@@ -14,6 +14,7 @@ struct Node * insertatindex(struct Node *,int index);
 
 int main(){
     struct Node * head;
+    int index;
     head=createlinkedlist(head);
     display(head);
     head=insertatbegin(head);
@@ -21,6 +22,11 @@ int main(){
     display(head);
     head=insertatend(head);
     printf("After insert at end\n");
+    display(head);
+    printf("Enter the index you want to insert : \n");
+    scanf("%d",&index);
+    head=insertatindex(head,index);
+    printf("After inserting at %d index\n",index);
     display(head);
 }
 struct Node * createlinkedlist(struct Node * head){
@@ -66,6 +72,20 @@ struct Node * insertatend(struct Node *head){
     ptr->next=NULL;
     return head;
 }
-struct Node * insertatend(struct Node *head,int index){
-    
+struct Node * insertatindex(struct Node *head,int index){
+    struct Node * ptr,*p;
+    int i=0;
+    p=head;
+    ptr = (struct Node *) malloc(sizeof(struct Node));
+    int data;
+    printf("Enter data you want to insert at end\n");
+    scanf("%d",&data);
+    ptr->data = data;
+    while(i != index-1){
+        p=p->next;
+        i++;
+    }
+    ptr->next=p->next;
+    p->next=ptr;
+    return head;
 }
