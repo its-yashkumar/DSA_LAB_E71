@@ -11,6 +11,8 @@ void display(struct Node *);
 struct Node * insertatbegin(struct Node *);
 struct Node * insertatend(struct Node *);
 struct Node * insertatindex(struct Node *,int index);
+struct Node * insertatdata(struct Node *head,int data);
+struct Node * deleteatend(struct Node *);
 
 int main(){
     struct Node * head;
@@ -28,6 +30,10 @@ int main(){
     head=insertatindex(head,index);
     printf("After inserting at %d index\n",index);
     display(head);
+    head=deleteatend(head);
+    printf("After deleting at end\n");
+    display(head);
+
 }
 struct Node * createlinkedlist(struct Node * head){
     int data;
@@ -88,4 +94,16 @@ struct Node * insertatindex(struct Node *head,int index){
     ptr->next=p->next;
     p->next=ptr;
     return head;
+}
+struct Node * deleteatend(struct Node *head){
+     struct Node * p,*q;
+     p=head;
+     q=head->next;
+     while(q->next != NULL){
+         p=p->next;
+         q=q->next;
+     }
+     p->next=NULL;
+     free(q);
+     return head;
 }
