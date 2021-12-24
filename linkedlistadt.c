@@ -34,6 +34,7 @@ int main(){
     printf("After deleting at end\n");
     display(head);
 
+
 }
 struct Node * createlinkedlist(struct Node * head){
     int data;
