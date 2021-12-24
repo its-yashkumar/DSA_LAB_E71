@@ -5,10 +5,10 @@ struct Node{
   struct Node * next;
 };
 struct Node * head,
-void createlinkedlist(struct Node *);
+void createlinkedlist();
 int main(){
     
 }
-void createlinkedlist(struct Node *){
+void createlinkedlist(){
     head=(struct Node *)malloc(sizeof(struct Node));
 }
