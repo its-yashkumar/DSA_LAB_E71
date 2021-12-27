@@ -16,23 +16,39 @@ struct Node * deleteatend(struct Node *);
 
 int main(){
     struct Node * head;
-    int index;
+    int index,com;
+    printf("Enter Commands :\n1)To create head\n2)To insert at being\n3)To insert at end\n4)To insert at index\n");
+    printf("5)To delete at end\n");
+    scanf("%d",&com);
+    if(com==1){
     head=createlinkedlist(head);
     display(head);
+    }
+    else if(com==2){
     head=insertatbegin(head);
     printf("After insert at begin\n");
     display(head);
+    }
+   else if(com==3){
     head=insertatend(head);
     printf("After insert at end\n");
     display(head);
+   }
+   else if(com==4){
     printf("Enter the index you want to insert : \n");
     scanf("%d",&index);
     head=insertatindex(head,index);
     printf("After inserting at %d index\n",index);
     display(head);
+   }
+   else if(com==5){
     head=deleteatend(head);
     printf("After deleting at end\n");
     display(head);
+   }
+   else{
+       printf("Enter valid command");
+   }
 
 
 }
