@@ -17,11 +17,14 @@ struct Node * deleteatend(struct Node *);
 int main(){
     struct Node * head;
     int index,com;
+   while(com!=-1){
     printf("Enter Commands :\n1)To create head\n2)To insert at being\n3)To insert at end\n4)To insert at index\n");
     printf("5)To delete at end\n");
     scanf("%d",&com);
+     
     if(com==1){
     head=createlinkedlist(head);
+    printf("Displaying head data :\n");
     display(head);
     }
     else if(com==2){
@@ -49,6 +52,11 @@ int main(){
    else{
        printf("Enter valid command");
    }
+   printf("Enter other commands or -1 to exit\n");
+   scanf("%d",&com);
+   if(com==-1) break;
+    
+}
 
 
 }
