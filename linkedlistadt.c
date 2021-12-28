@@ -142,3 +142,7 @@ struct Node * deleteatbegin(struct Node * head){
     free(ptr);
     return head;
 }
+/*struct Node * deleteatindex(struct Node * head){
+    int index;
+
+}*/
