@@ -20,7 +20,7 @@ int main(){
     int index,com;
    while(com!=-1){
     printf("Enter Commands :\n1)To create head\n2)To insert at being\n3)To insert at end\n4)To insert at index\n");
-    printf("5)To delete at end\n6) To delete at start\n");
+    printf("5)To delete at end\n6) To delete at start\n-1 to exit\n");
     scanf("%d",&com);
      
     if(com==1){
@@ -55,12 +55,11 @@ int main(){
     printf("After deleting at begin\n");
     display(head);
    }
+   else if(com==-1) break;
    else{
        printf("Enter valid command\n");
    }
-   printf("Enter other commands or -1 to exit\n");
-   scanf("%d",&com);
-   if(com==-1) break;
+  
     
 }
 
