@@ -13,13 +13,14 @@ struct Node * insertatend(struct Node *);
 struct Node * insertatindex(struct Node *,int index);
 struct Node * insertatdata(struct Node *head,int data);
 struct Node * deleteatend(struct Node *);
+struct Node * deleteatbegin(struct Node * head);
 
 int main(){
     struct Node * head;
     int index,com;
    while(com!=-1){
     printf("Enter Commands :\n1)To create head\n2)To insert at being\n3)To insert at end\n4)To insert at index\n");
-    printf("5)To delete at end\n");
+    printf("5)To delete at end\n6) To delete at start\n");
     scanf("%d",&com);
      
     if(com==1){
@@ -49,15 +50,19 @@ int main(){
     printf("After deleting at end\n");
     display(head);
    }
+   else if(com==6){
+    head=deleteatbegin(head);
+    printf("After deleting at begin\n");
+    display(head);
+   }
    else{
-       printf("Enter valid command");
+       printf("Enter valid command\n");
    }
    printf("Enter other commands or -1 to exit\n");
    scanf("%d",&com);
    if(com==-1) break;
     
 }
-
 
 }
 struct Node * createlinkedlist(struct Node * head){
@@ -131,4 +136,10 @@ struct Node * deleteatend(struct Node *head){
      p->next=NULL;
      free(q);
      return head;
+}
+struct Node * deleteatbegin(struct Node * head){
+    struct Node * ptr = head;
+    head = head->next;
+    free(ptr);
+    return head;
 }
