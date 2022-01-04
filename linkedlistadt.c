@@ -142,7 +142,36 @@ struct Node * deleteatbegin(struct Node * head){
     free(ptr);
     return head;
 }
-/*struct Node * deleteatindex(struct Node * head){
+struct Node * deleteatindex(struct Node * head){
     int index;
+    struct Node * p,*q;
+    p=head;
+    q=head->next;
+    printf("Enter the index of node you want to delete :\n");
+    scanf("%d",&index);
+    int i=0;
+    while(i != index-1){
+        p=p->next;
+        q=q->next;
+        i++;
+    }
+    p->next=q->next;
+    free(q);
+    return head;
 
-}*/
+}
+struct Node * deleteatvalue(struct Node * head, int value){
+    struct Node *p = head;
+    struct Node *q = head->next;
+    while(q->data!=value && q->next!= NULL)
+    {
+        p = p->next;
+        q = q->next;
+    }
+    
+    if(q->data == value){
+        p->next = q->next;
+        free(q);
+    }
+    return head;
+}
