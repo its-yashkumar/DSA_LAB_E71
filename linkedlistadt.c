@@ -14,7 +14,7 @@ struct Node * insertatindex(struct Node *,int index);
 struct Node * insertatdata(struct Node *head,int data);
 struct Node * deleteatend(struct Node *);
 struct Node * deleteatbegin(struct Node * head);
-
+struct Node * reverse(struct Node * head);
 int main(){
     struct Node * head;
     int index,com;
@@ -174,4 +174,7 @@ struct Node * deleteatvalue(struct Node * head, int value){
         free(q);
     }
     return head;
+}
+struct Node * reverse(struct Node * head){
+
 }
