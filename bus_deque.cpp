@@ -133,5 +133,4 @@ void display(struct Dequeue * deq){
         i=(i+1)%deq->capacity;
     }
     cout<<(deq->dptr)[deq->rear];
-    
 }
