@@ -20,7 +20,7 @@ int main(){
     int index,com;
    while(com!=-1){
     printf("Enter Commands :\n1)To create head\n2)To insert at being\n3)To insert at end\n4)To insert at index\n");
-    printf("5)To delete at end\n6) To delete at start\n-1 to exit\n");
+    printf("5)To delete at end\n6) To delete at start\n7)To reverse linked list\n-1 to exit\n");
     scanf("%d",&com);
      
     if(com==1){
@@ -55,6 +55,15 @@ int main(){
     printf("After deleting at begin\n");
     display(head);
    }
+   else if (com==7)
+   {
+    printf("Before reversing\n");
+    display(head);
+    head=reverse(head);
+    printf("After reversing the linked list is\n");
+    display(head);
+   }
+   
    else if(com==-1) break;
    else{
        printf("Enter valid command\n");
@@ -176,5 +185,16 @@ struct Node * deleteatvalue(struct Node * head, int value){
     return head;
 }
 struct Node * reverse(struct Node * head){
-
+   struct Node *current,*prev,*next;
+   current=head;
+   prev=NULL;
+   while (current != NULL)
+   {
+       next=current->next;
+       current->next=prev;
+       prev=current;
+       current=next;
+   }
+   head=prev;
+   return head;
 }
