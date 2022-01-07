@@ -16,6 +16,7 @@ struct Node * deleteatend(struct Node *);
 struct Node * deleteatbegin(struct Node * head);
 struct Node * deleteatvalue(struct Node * head, int value);
 struct Node * reverse(struct Node * head);
+
 int main(){
     struct Node * head;
     int index,com;
