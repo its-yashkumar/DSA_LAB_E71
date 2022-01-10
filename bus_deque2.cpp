@@ -12,6 +12,8 @@ void createdequeue(struct Dequeue *);
 int isoverflow(struct Dequeue *);
 int isunderflow(struct Dequeue *);
 void enqueue(struct Dequeue *);
+void display(struct Dequeue *);
+void dequeue_rear(struct Dequeue *);
 int main(){
     struct Dequeue deq;
     int com;
@@ -24,8 +26,9 @@ int main(){
     while(1){
    if(com==1){
        enqueue(&deq);
-//        display(&deq);
-//    }
+       cout<<endl;
+       display(&deq);
+  }
 //    else if(com==2){
 //        dequeue_rear(&deq);
 //        display(&deq);
@@ -33,7 +36,7 @@ int main(){
 //    else if(com==3){
 //        dequeue_front(&deq);
 //        display(&deq);
-   }
+//    }
    cout<<endl;
    cin>>com;
    if(com==-1){
@@ -42,9 +45,9 @@ int main(){
    }
 }
 void createdequeue(struct Dequeue * deq){
-     deq->capacity=30;
-     deq->front=15;
-     deq->rear=15;
+     deq->capacity=3;
+     deq->front=deq->capacity/2;
+     deq->rear=deq->capacity/2;
      deq->dptr=(char *)calloc(deq->capacity,sizeof(char));
 }
 int isoverflow(struct Dequeue * deq){
@@ -54,16 +57,18 @@ int isoverflow(struct Dequeue * deq){
     else return 0;
 }
 int isunderflow(struct Dequeue * deq){
-    if((deq->front==15 && deq->rear==15)){
+    if((deq->front==(deq->capacity/2) && deq->rear==(deq->capacity/2))){
         return 1;
     }
     else return 0;
 }
 void enqueue(struct Dequeue * deq){
     int com;
-    if(isoverflow){
+    if(isoverflow(deq)){
         cout<<"Bus is full.No more passengers can board";
     }
+    else
+    {
     cout<<"Enter 1)To seat at front end\n2)To seat at rear end"<<endl;
     cin>>com;
     if(com==1){
@@ -85,3 +90,14 @@ void enqueue(struct Dequeue * deq){
             }
         }
     }
+}
+void display(struct Dequeue * deq){
+    int i=deq->front;
+    cout<<"Elements of dequeue\n";
+    while (i != deq->rear)
+    {
+        cout<<(deq->dptr)[i];
+        i++;
+    }
+    cout<<(deq->dptr)[deq->rear];
+}
