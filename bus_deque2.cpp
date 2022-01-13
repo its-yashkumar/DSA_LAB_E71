@@ -14,6 +14,9 @@ int isunderflow(struct Dequeue *);
 void enqueue(struct Dequeue *);
 void display(struct Dequeue *);
 void dequeue_rear(struct Dequeue *);
+void dequeue_rear(struct Dequeue *);
+void dequeue_front(struct Dequeue *);
+void dequeue_front(struct Dequeue *);
 int main(){
     struct Dequeue deq;
     int com;
@@ -29,14 +32,14 @@ int main(){
        cout<<endl;
        display(&deq);
   }
-//    else if(com==2){
-//        dequeue_rear(&deq);
-//        display(&deq);
-//    }
-//    else if(com==3){
-//        dequeue_front(&deq);
-//        display(&deq);
-//    }
+   else if(com==2){
+       dequeue_rear(&deq);
+       display(&deq);
+   }
+   else if(com==3){
+       dequeue_front(&deq);
+       display(&deq);
+   }
    cout<<endl;
    cin>>com;
    if(com==-1){
@@ -45,7 +48,7 @@ int main(){
    }
 }
 void createdequeue(struct Dequeue * deq){
-     deq->capacity=3;
+     deq->capacity=30;
      deq->front=deq->capacity/2;
      deq->rear=deq->capacity/2;
      deq->dptr=(char *)calloc(deq->capacity,sizeof(char));
@@ -100,4 +103,30 @@ void display(struct Dequeue * deq){
         i++;
     }
     cout<<(deq->dptr)[deq->rear];
+}
+void dequeue_rear(struct Dequeue * deq){
+    if(isunderflow(deq)){
+        cout<<"Bus is empty\n";
+    }
+    else{
+     if(deq->rear==(deq->capacity/2)){
+         cout<<"rear side is empty\n";
+     }
+     else{
+         deq->rear--;
+     }
+    }
+}
+void dequeue_front(struct Dequeue * deq){
+    if(isunderflow(deq)){
+        cout<<"Bus is empty\n";
+    }
+    else{
+     if(deq->front==(deq->capacity/2)){
+         cout<<"front side is empty\n";
+     }
+     else{
+         deq->front++;
+     }
+    }
 }
