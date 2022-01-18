@@ -115,6 +115,7 @@ int main()
 	readPolynomial(&second);
 	displayPolynomial(second);
 	addPolynomials(&result, first, second);
+    printf("\nAffter addition\n")
 	displayPolynomial(result);
 	return 0;
 }
