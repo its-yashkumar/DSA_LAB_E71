@@ -12,18 +12,94 @@ struct Node* delete(struct Node *root,int data);
 struct Node* find_minright(struct Node *root);
 struct Node* search(struct Node *root, int data);
 void inorder(struct Node* root);
+void preorder(struct Node* root);
+void postorder(struct Node* root);
+void display(struct Node* root);
 int main(){
     struct Node * root,* key;
-    root=create(45);
-    root=insert(root,75);
-    root=insert(root,24);
-    inorder(root);
-    printf("\nAfter deleting\n");
-    root=delete(root,45);
-    inorder(root);
-    key=search(root,24);
-    printf("\nThe data %d is present at address %u\n",key->data,key);
+    int com;
+    while(com!=-1){
+    printf("Enter Commands :\n1)To create binary tree\n2)To insert node\n3)To display BST");
+    printf("4)To delete node\n5) To search a node\n-1)To exit\n");
+    scanf("%d",&com);
+    if(com==1){
+    printf("\nEnter the value of node to create\n");
+    int data;
+    scanf("%d",&data);
+    root=create(data);
+    printf("\nThe nodes of BST in inorder\n");
+    display(root);
+    }
+    else if(com==2){
+    printf("\nEnter the value of node to insert\n");
+    int data;
+    scanf("%d",&data);
+    root=insert(root,data);
+    printf("\nAfter insert the BST is in inorder\n");
+    display(root);
+    }
+    else if(com==3){
+    display(root);
+   }
+   else if(com==4){
+    printf("\nEnter node you want to delete\n");
+    int data;
+    scanf("%d",&data);
+    root=delete(root,data);
+    display(root);
+   }
+   else if(com==5){
+    printf("\nEnter node you want to search\n");
+    int data;
+    scanf("%d",&data);
+    root=search(root,data);
+    if(root==NULL){
+        printf("Value %d is not present in root\n",data);
+    }
+    else{
+        printf("Value %d is present in BST\n",data);
+    }
+   }
+   else if(com==-1) break;
+   else{
+       printf("Enter valid command\n");
+   }
+}
 
+}
+void display(struct Node * root){
+    int com;
+    printf("Enter Commands :\n1)Inorder\n2)Preorder\n3)Postorder\n");
+    scanf("%d",&com);
+    if(com==1){
+        inorder(root);
+    }
+    else if(com==2){
+        preorder(root);
+    }
+    else if(com==3){
+        postorder(root);
+    }
+    else{
+        printf("Enter valid command\n");
+    }
+    printf("\n");
+}
+
+void postorder(struct Node* root){
+   if(root != NULL){
+       postorder(root->left);
+       postorder(root->right);
+       printf("%d\t",root->data);
+   }
+}
+void preorder(struct Node* root){
+    if(root!=NULL){
+        printf("%d\t",root->data);
+        preorder(root->left);
+        preorder(root->right);
+
+    }
 }
 void inorder(struct Node* root){
     if(root != NULL){
