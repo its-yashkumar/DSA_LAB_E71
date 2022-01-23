@@ -7,7 +7,10 @@ struct Node
    struct Node * right;
 };
 struct Node* create(int data);
-struct Node* insert(int data);
+struct Node* insert(struct Node *root,int data);
+struct Node* delete(struct Node *root,int data);
+struct Node* find_minright(struct Node *root);
+struct Node* search(struct Node *root, int data);
 int main(){
     
 }
@@ -31,3 +34,53 @@ struct Node* insert(struct Node *root,int data){
    }
    return root;
 }
+struct Node* delete(struct Node *root,int data){
+    if(root==NULL){
+        return NULL;
+    }
+    if(data>root->data){
+        root->right=delete(root->right,data);
+    }
+    else if(data<root->data){
+        root->left=delete(root->left,data);
+    }
+    else{
+      if(root->left==NULL && root->right==NULL){
+          return NULL;
+      }
+      else if(root->left==NULL || root->right==NULL){
+          struct Node * temp;
+          if(root->left){
+              temp=root->right;
+          }
+          else{
+              temp=root->left;
+          }
+          free(root);
+          return temp;
+      }
+      else{
+          struct Node * temp=find_minright(root->right);
+          root->data=temp->data;
+          root->right=delete(root->right,temp->data);
+      }
+
+      }
+      return root;
+}
+struct Node* find_minright(struct Node* root){
+    if(root==NULL){
+        return NULL;
+    }
+    else if(root->left != NULL){
+        return find_minright(root->left);
+    }
+    return root;
+}
+struct Node* search(struct Node *root, int data){
+    if(root==NULL || root->data=data){
+        return root;
+    }
+}
+
+
