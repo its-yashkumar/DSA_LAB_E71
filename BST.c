@@ -78,8 +78,15 @@ struct Node* find_minright(struct Node* root){
     return root;
 }
 struct Node* search(struct Node *root, int data){
-    if(root==NULL || root->data=data){
+    if(root==NULL || root->data==data){
         return root;
+    }
+    else if(data>root->data){
+        return search(root->right,data);
+    }
+    else{
+        return search(root->left,data);
+
     }
 }
 
