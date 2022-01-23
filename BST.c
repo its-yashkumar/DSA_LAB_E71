@@ -11,8 +11,26 @@ struct Node* insert(struct Node *root,int data);
 struct Node* delete(struct Node *root,int data);
 struct Node* find_minright(struct Node *root);
 struct Node* search(struct Node *root, int data);
+void inorder(struct Node* root);
 int main(){
-    
+    struct Node * root,* key;
+    root=create(45);
+    root=insert(root,75);
+    root=insert(root,24);
+    inorder(root);
+    printf("\nAfter deleting\n");
+    root=delete(root,45);
+    inorder(root);
+    key=search(root,24);
+    printf("\nThe data %d is present at address %u\n",key->data,key);
+
+}
+void inorder(struct Node* root){
+    if(root != NULL){
+        inorder(root->left);
+        printf("%d\t",root->data);
+        inorder(root->right);
+    }
 }
 struct Node* create(int data){
    struct Node * tree;
