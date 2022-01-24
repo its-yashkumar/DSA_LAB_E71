@@ -15,12 +15,14 @@ void inorder(struct Node* root);
 void preorder(struct Node* root);
 void postorder(struct Node* root);
 void display(struct Node* root);
+int countall(struct Node* root);
+int countleaf(struct Node* root);
 int main(){
     struct Node * root,* key;
     int com;
     while(com!=-1){
-    printf("Enter Commands :\n1)To create binary tree\n2)To insert node\n3)To display BST");
-    printf("4)To delete node\n5) To search a node\n-1)To exit\n");
+    printf("Enter Commands :\n1)To create binary tree\n2)To insert node\n3)To display BST\n");
+    printf("4)To delete node\n5) To search a node\n6)To count total number of nodes\n7)To count leaf nodes\n-1)To exit\n");
     scanf("%d",&com);
     if(com==1){
     printf("\nEnter the value of node to create\n");
@@ -60,12 +62,36 @@ int main(){
         printf("Value %d is present in BST\n",data);
     }
    }
+   else if(com==6){
+       printf("The number of total nodes %d\n",countall(root));
+   }
+   else if(com==7){
+       printf("The number of leaf nodes %d\n",countleaf(root));
+   }
    else if(com==-1) break;
    else{
        printf("Enter valid command\n");
    }
+
 }
 
+}
+int countall(struct Node * root){
+    if(root==NULL){
+        return 0;
+    }
+    return 1+countall(root->left)+countall(root->right);
+}
+int countleaf(struct Node * root){
+    if(root==NULL){
+        return 0;
+    }
+    else if(root->left==NULL && root->right==NULL){
+        return 1;
+    }
+    else{
+    return countleaf(root->left)+countleaf(root->right);
+    }
 }
 void display(struct Node * root){
     int com;
@@ -85,7 +111,6 @@ void display(struct Node * root){
     }
     printf("\n");
 }
-
 void postorder(struct Node* root){
    if(root != NULL){
        postorder(root->left);
