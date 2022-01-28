@@ -7,11 +7,11 @@ struct Node
 };
 struct Node * head,*tail;
 void create(int data);
-void displaybegin();
+void displayhead();
 
 int main(){
    create(34);
-   displaybegin();
+   displayhead();
 }
 void create(int data){
     struct Node * ptr;
@@ -22,11 +22,16 @@ void create(int data){
     head=ptr;
     tail=ptr;
 }
-void displaybegin(){
+void displayhead(){
     struct Node* ptr;
     ptr=head;
+    if(head==NULL){
+        printf("List is empty");
+    }
+    else{
     while(ptr != NULL){
        printf("%d\n",ptr->data);
        ptr=ptr->next;
 }
+    }
 }
