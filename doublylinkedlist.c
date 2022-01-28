@@ -7,5 +7,6 @@ struct Node
 };
 
 int main(){
-
+   struct Node * head,*tail;
+   
 }
