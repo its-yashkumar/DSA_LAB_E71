@@ -10,13 +10,14 @@ void create(int data);
 void displayhead();
 void displaytail();
 void insertatbegin();
+void insertatend();
 
 int main(){
   int com;
   while(1){
   printf("Enter commands to perform following operations :\n");
   printf("1)To create doubly linked list\n2)To traverse from head\n3)To traverse from tail\n");
-  printf("4)To insert at begin of list\n-1)To exit\n");
+  printf("4)To insert at begin of list\n5)To insert at end\n-1)To exit\n");
   scanf("%d",&com);
   if(com==1){
       int data;
@@ -37,6 +38,10 @@ int main(){
   else if (com==4)
   {
       insertatbegin();
+  }
+  else if (com==5)
+  {
+      insertatend();
   }
   else if (com==-1)
   {
@@ -94,4 +99,16 @@ void insertatbegin(){
     ptr->prev=NULL;
     head->prev=ptr;
     head=ptr;
+}
+void insertatend(){
+    struct Node * ptr = (struct Node *) malloc(sizeof(struct Node));
+    int data;
+    printf("Enter data you want to insert at end\n");
+    scanf("%d",&data);
+    
+    ptr->data=data;
+    ptr->prev=tail;
+    ptr->next=NULL;
+    tail->next=ptr;
+    tail=ptr;
 }
