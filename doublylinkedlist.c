@@ -12,12 +12,41 @@ void displaytail();
 void insertatbegin();
 
 int main(){
-   create(34);
-   insertatbegin();
-   printf("Traversing from head\n");
-   displayhead();
-   printf("Traversing from tail\n");
-   displaytail();
+  int com;
+  while(1){
+  printf("Enter commands to perform following operations :\n");
+  printf("1)To create doubly linked list\n2)To traverse from head\n3)To traverse from tail\n");
+  printf("4)To insert at begin of list\n-1)To exit\n");
+  scanf("%d",&com);
+  if(com==1){
+      int data;
+      printf("Enter the data\n");
+      scanf("%d",&data);
+      create(data);
+  }
+  else if (com==2)
+  {
+      printf("Traversing from head\n");
+      displayhead();
+  }
+  else if (com==3)
+  {
+      printf("Traversing from tail\n");
+      displaytail();
+  }
+  else if (com==4)
+  {
+      insertatbegin();
+  }
+  else if (com==-1)
+  {
+      return 0;
+  }
+  else
+  {
+      printf("Enter valid command\n");
+  }
+  }
 }
 void create(int data){
     struct Node * ptr;
