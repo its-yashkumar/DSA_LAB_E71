@@ -11,13 +11,14 @@ void displayhead();
 void displaytail();
 void insertatbegin();
 void insertatend();
+void insertatindex();
 
 int main(){
   int com;
   while(1){
   printf("Enter commands to perform following operations :\n");
   printf("1)To create doubly linked list\n2)To traverse from head\n3)To traverse from tail\n");
-  printf("4)To insert at begin of list\n5)To insert at end\n-1)To exit\n");
+  printf("4)To insert at begin of list\n5)To insert at end\n6)To insert at index-1)To exit\n");
   scanf("%d",&com);
   if(com==1){
       int data;
@@ -43,6 +44,11 @@ int main(){
   {
       insertatend();
   }
+  else if (com==6)
+  {
+      insertatindex();
+  }
+  
   else if (com==-1)
   {
       return 0;
@@ -111,4 +117,36 @@ void insertatend(){
     ptr->next=NULL;
     tail->next=ptr;
     tail=ptr;
+}
+void insertatindex(){
+    int data,index,i=0;
+    struct Node* temp,*ptr;
+    printf("Enter index at which you want to insert data");
+    scanf("%d",&index);
+    if(head==NULL){
+         printf("Enter data you want to insert at %d index\n");
+         scanf("%d",&data);
+         create(data);
+    }
+    else if (index==0)
+    {
+        insertatbegin();
+    }
+    else{
+        printf("Enter data you want to insert at %d index\n");
+        scanf("%d",&data);
+        temp=head;
+        while (i<index-1)
+        {
+            temp=temp->next;
+            i++;
+        }
+        ptr->next=temp->next;
+        ptr->prev=temp;
+        temp->next=ptr;
+        temp->next->prev=ptr;
+        
+    }
+    
+
 }
