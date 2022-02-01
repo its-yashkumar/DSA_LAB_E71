@@ -119,25 +119,30 @@ void insertatend(){
     tail=ptr;
 }
 void insertatindex(){
-    int data,index,i=0;
+    int data,position,i=1;
     struct Node* temp,*ptr;
-    printf("Enter index at which you want to insert data");
-    scanf("%d",&index);
+    ptr=(struct Node *)malloc(sizeof(struct Node));
+    ptr->prev = NULL;
+    ptr->next = NULL;
+    printf("Enter position at which you want to insert data\n");
+    scanf("%d",&position);
     if(head==NULL){
-         printf("Enter data you want to insert at %d index\n");
-         scanf("%d",&data);
-         create(data);
+       
+        printf("Enter data you want to insert at %d index\n",position);
+        scanf("%d",&data);
+        create(data);
     }
-    else if (index==0)
+    else if (position==1)
     {
         insertatbegin();
     }
     else{
-        printf("Enter data you want to insert at %d index\n");
+        printf("Enter data you want to insert at %d position\n");
         scanf("%d",&data);
         temp=head;
-        while (i<index-1)
+        while (i<position-1)
         {
+            
             temp=temp->next;
             i++;
         }
