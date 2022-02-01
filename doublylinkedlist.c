@@ -19,6 +19,7 @@ void deleteatindex();
 int findlength();
 void search();
 void reverse();
+void sort();
 
 int main(){
   int com;
@@ -29,7 +30,7 @@ int main(){
   printf("4)To insert at begin of list\n5)To insert at end\n6)To insert at index\n");
   printf("7)To delete at begin\n8)To delete at end\n9)To delete at index\n");
   printf("10)To find of linked list\n11)To search an element in linked list\n");
-  printf("12)To reverse Linked List\n-1)To exit\n");
+  printf("12)To reverse Linked List\n13)To sort linked list\n-1)To exit\n");
   }
   scanf("%d",&com);
   if(com==1){
@@ -85,6 +86,10 @@ int main(){
   else if (com==12)
   {
       reverse();
+  }
+   else if (com==13)
+  {
+      sort();
   }
   else if (com==-1)
   {
@@ -326,3 +331,21 @@ void reverse()
      if(temp != NULL )
         head = temp->prev;
 }    
+void sort() {  
+    struct Node *current = NULL, *index = NULL;  
+    int temp;   
+    if(head == NULL) {  
+        return;  
+    }  
+    else {   
+        for(current = head; current->next != NULL; current = current->next) {  
+            for(index = current->next; index != NULL; index = index->next) {    
+                if(current->data > index->data) {  
+                    temp = current->data;  
+                    current->data = index->data;  
+                    index->data = temp;  
+                }  
+            }  
+        }  
+    }  
+}  
