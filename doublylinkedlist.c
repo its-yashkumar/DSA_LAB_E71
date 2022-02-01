@@ -18,7 +18,7 @@ void deleteatend();
 void deleteatindex();
 int findlength();
 void search();
-
+void reverse();
 
 int main(){
   int com;
@@ -28,7 +28,8 @@ int main(){
   printf("1)To create doubly linked list\n2)To traverse from head\n3)To traverse from tail\n");
   printf("4)To insert at begin of list\n5)To insert at end\n6)To insert at index\n");
   printf("7)To delete at begin\n8)To delete at end\n9)To delete at index\n");
-  printf("10)To find of linked list\n11)To search an element in linked list\n-1)To exit\n");
+  printf("10)To find of linked list\n11)To search an element in linked list\n");
+  printf("12)To reverse Linked List\n-1)To exit\n");
   }
   scanf("%d",&com);
   if(com==1){
@@ -80,6 +81,10 @@ int main(){
    else if (com==11)
   {
       search();
+  }
+  else if (com==12)
+  {
+      reverse();
   }
   else if (com==-1)
   {
@@ -305,3 +310,19 @@ void search()
         }  
     }
 }     
+void reverse()
+{
+     struct Node *temp = NULL; 
+     struct Node *current = head;
+      
+     while (current !=  NULL)
+     {
+       temp = current->prev;
+       current->prev = current->next;
+       current->next = temp;             
+       current = current->prev;
+     }     
+      
+     if(temp != NULL )
+        head = temp->prev;
+}    
