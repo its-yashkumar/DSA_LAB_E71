@@ -16,6 +16,7 @@ void insertatindex();
 void deleteatbegin();
 void deleteatend();
 void deleteatindex();
+int findlength();
 
 
 int main(){
@@ -25,7 +26,8 @@ int main(){
   printf("Enter commands to perform following operations :\n");
   printf("1)To create doubly linked list\n2)To traverse from head\n3)To traverse from tail\n");
   printf("4)To insert at begin of list\n5)To insert at end\n6)To insert at index\n");
-  printf("7)To delete at begin\n8)To delete at end\n9)To delete at index\n-1)To exit\n");
+  printf("7)To delete at begin\n8)To delete at end\n9)To delete at index\n");
+  printf("10)To find of linked list\n-1)To exit\n");
   }
   scanf("%d",&com);
   if(com==1){
@@ -67,6 +69,12 @@ int main(){
   else if (com==9)
   {
       deleteatindex();
+  }
+  else if (com==10)
+  {
+      int count;
+      count=findlength();
+      printf("The length of linked is %d\n",count);
   }
   else if (com==-1)
   {
@@ -247,4 +255,14 @@ void deleteatindex(){
         free(temp);  
         printf("Node deleted\n");  
     }     
+}
+int findlength(){
+    struct Node* ptr;
+    ptr=head;
+    int count=0;
+    while(ptr != NULL){
+       ptr=ptr->next;
+       count++;
+    }
+    return count;
 }
