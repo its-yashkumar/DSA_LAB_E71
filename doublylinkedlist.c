@@ -17,6 +17,7 @@ void deleteatbegin();
 void deleteatend();
 void deleteatindex();
 int findlength();
+void search();
 
 
 int main(){
@@ -27,7 +28,7 @@ int main(){
   printf("1)To create doubly linked list\n2)To traverse from head\n3)To traverse from tail\n");
   printf("4)To insert at begin of list\n5)To insert at end\n6)To insert at index\n");
   printf("7)To delete at begin\n8)To delete at end\n9)To delete at index\n");
-  printf("10)To find of linked list\n-1)To exit\n");
+  printf("10)To find of linked list\n11)To search an element in linked list\n-1)To exit\n");
   }
   scanf("%d",&com);
   if(com==1){
@@ -75,6 +76,10 @@ int main(){
       int count;
       count=findlength();
       printf("The length of linked is %d\n",count);
+  }
+   else if (com==11)
+  {
+      search();
   }
   else if (com==-1)
   {
@@ -266,3 +271,37 @@ int findlength(){
     }
     return count;
 }
+void search()  
+{  
+    struct Node *ptr;  
+    int item,i=0,flag;  
+    ptr = head;   
+    if(ptr == NULL)  
+    {  
+        printf("Empty List\n");  
+    }  
+    else  
+    {   
+        printf("Enter item which you want to search?\n");   
+        scanf("%d",&item);  
+        while (ptr!=NULL)  
+        {  
+            if(ptr->data == item)  
+            {  
+                printf("Item found at location %d \n",i+1);  
+                flag=0;  
+                break;  
+            }   
+            else  
+            {  
+                flag=1;  
+            }  
+            i++;  
+            ptr = ptr -> next;  
+        }  
+        if(flag==1)  
+        {  
+            printf("\nItem not found\n");  
+        }  
+    }
+}     
