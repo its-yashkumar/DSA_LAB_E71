@@ -12,6 +12,9 @@ void displaytail();
 void insertatbegin();
 void insertatend();
 void insertatindex();
+void deleteatbegin();
+void deleteatend();
+void deleteatindex();
 
 int main(){
   int com;
