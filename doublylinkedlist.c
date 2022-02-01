@@ -6,6 +6,7 @@ struct Node
     struct Node * next,*prev;
 };
 struct Node * head,*tail;
+
 void create(int data);
 void displayhead();
 void displaytail();
@@ -15,6 +16,7 @@ void insertatindex();
 void deleteatbegin();
 void deleteatend();
 void deleteatindex();
+
 
 int main(){
   int com;
@@ -66,6 +68,7 @@ int main(){
   {
       return 0;
   }
+
   else
   {
       printf("Enter valid command\n");
@@ -214,4 +217,6 @@ void deleteatend(){
         printf("Node deleted\n");  
     }  
 }
-
+void deleteatindex(){
+    
+}
