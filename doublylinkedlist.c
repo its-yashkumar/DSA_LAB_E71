@@ -25,7 +25,7 @@ int main(){
   printf("Enter commands to perform following operations :\n");
   printf("1)To create doubly linked list\n2)To traverse from head\n3)To traverse from tail\n");
   printf("4)To insert at begin of list\n5)To insert at end\n6)To insert at index\n");
-  printf("7)To delete at begin\n8)To delete at end\n-1)To exit\n");
+  printf("7)To delete at begin\n8)To delete at end\n9)To delete at index\n-1)To exit\n");
   }
   scanf("%d",&com);
   if(com==1){
@@ -60,9 +60,13 @@ int main(){
   {
       deleteatbegin();
   }
-   else if (com==8)
+  else if (com==8)
   {
       deleteatend();
+  }
+  else if (com==9)
+  {
+      deleteatindex();
   }
   else if (com==-1)
   {
@@ -218,5 +222,29 @@ void deleteatend(){
     }  
 }
 void deleteatindex(){
-    
+    struct Node *ptr, *temp;  
+    int i=1;
+    int position;  
+    printf("Enter the position after which the node is to be deleted : ");  
+    scanf("%d", &position);  
+    ptr = head;  
+    while(i<position-1){ 
+    ptr = ptr -> next;  
+    }
+    if(ptr -> next == NULL)  
+    {  
+        printf("Cannot delete the node\n");  
+    }  
+    else if(ptr -> next -> next == NULL)  
+    {  
+        ptr ->next = NULL;  
+    }  
+    else  
+    {   
+        temp = ptr -> next;  
+        ptr -> next = temp -> next;  
+        temp -> next -> prev = ptr;  
+        free(temp);  
+        printf("Node deleted\n");  
+    }     
 }
