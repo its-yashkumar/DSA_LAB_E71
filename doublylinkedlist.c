@@ -22,7 +22,7 @@ int main(){
   printf("Enter commands to perform following operations :\n");
   printf("1)To create doubly linked list\n2)To traverse from head\n3)To traverse from tail\n");
   printf("4)To insert at begin of list\n5)To insert at end\n6)To insert at index\n");
-  printf("7)To delete at begin-1)To exit\n");
+  printf("7)To delete at begin\n-1)To exit\n");
   scanf("%d",&com);
   if(com==1){
       int data;
