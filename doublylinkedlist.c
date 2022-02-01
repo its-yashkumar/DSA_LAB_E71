@@ -140,21 +140,29 @@ void insertatindex(){
         insertatbegin();
     }
     else{
-        printf("Enter data you want to insert at %d position\n");
-        scanf("%d",&data);
-        temp=head;
-        while (i<position-1)
-        {
-            
-            temp=temp->next;
-            i++;
-        }
-        ptr->next=temp->next;
-        ptr->prev=temp;
-        temp->next=ptr;
-        temp->next->prev=ptr;
-        
-    }
+       {  
+       temp=head;  
+    //    printf("Enter the location");  
+    //    scanf("%d",&position);  
+       for(i=0;i<position;i++)  
+       {  
+           temp = temp->next;  
+           if(temp == NULL)  
+           {  
+               printf("\n There are less than %d elements", position);  
+               return;  
+           }  
+       }  
+       printf("Enter value\n");  
+       scanf("%d",&data);  
+       ptr->data = data;  
+       ptr->next = temp->next;  
+       ptr -> prev = temp;  
+       temp->next = ptr;  
+       temp->next->prev=ptr;  
+       printf("Node inserted\n");  
+   }  
+}  
+}
     
 
-}
