@@ -22,7 +22,7 @@ int main(){
   printf("Enter commands to perform following operations :\n");
   printf("1)To create doubly linked list\n2)To traverse from head\n3)To traverse from tail\n");
   printf("4)To insert at begin of list\n5)To insert at end\n6)To insert at index\n");
-  printf("7)To delete at begin\n-1)To exit\n");
+  printf("7)To delete at begin\n8)To delete at end\n-1)To exit\n");
   scanf("%d",&com);
   if(com==1){
       int data;
@@ -55,6 +55,10 @@ int main(){
   else if (com==7)
   {
       deleteatbegin();
+  }
+   else if (com==8)
+  {
+      deleteatend();
   }
   else if (com==-1)
   {
@@ -187,5 +191,25 @@ void deleteatbegin(){
         printf("Node deleted\n");  
     }  
 }
-    
+void deleteatend(){
+    struct Node *ptr;  
+    if(head == NULL)  
+    {  
+        printf("List is empty\n");  
+    }  
+    else if(head->next == NULL)  
+    {  
+        head = NULL;   
+        free(head);   
+        printf("Node deleted\n");  
+    }  
+    else   
+    {  
+        ptr = tail;   
+        ptr -> prev -> next = NULL;   
+        tail=ptr->prev;
+        free(ptr);  
+        printf("Node deleted\n");  
+    }  
+}
 
