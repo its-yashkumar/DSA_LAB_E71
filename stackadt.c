@@ -32,10 +32,12 @@ int main(){
      printf("Enter index whose value you want to peek from top\n");
      scanf("%d",&index);
      peekdata=peek(&stack,index);
+     if(peekdata!=-1)
      printf("The element at the %d down of stack is : %d\n",index,peekdata);
      break;
    case 3:
       data=pop(&stack);
+      if(data!=-1)
       printf("The popped data is : %d\n",data);
       break;
    
@@ -71,12 +73,19 @@ void push(struct Mystack* stack,int data){
    }
 }
 int peek(struct Mystack* stack,int index){
+    if(index<=stack->top)
     return (stack->sptr)[((stack->top)-index)];
+    else{
+     printf("Invalid index");
+     return -1;
+    }
+
 }
 int pop(struct Mystack* stack){
     int empty=isempty(stack);;
     if(empty==1){
         printf("The stack is underflowed and hence cannot pop");
+        return -1;
     }
     else{
        int val=(stack->sptr)[stack->top];
