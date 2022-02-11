@@ -52,7 +52,7 @@ int main(){
 }
 void createstack(struct Mystack* stack){
     stack->top=-1;
-    stack->sptr=(int *)malloc(stack->size*sizeof(struct Mystack));
+    stack->sptr=(int *)malloc(stack->size*sizeof(int));
 }
 int isfull(struct Mystack * stack){
     if(stack->top==stack->size-1){
