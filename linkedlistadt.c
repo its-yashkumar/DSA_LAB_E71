@@ -135,6 +135,18 @@ int findlength(struct Node * head){
     }
     return count;
 }
+int isSorted(struct Node *head) 
+{  
+    if (head == NULL) 
+        return 1; 
+    
+    for (Node *t=head; t->next != NULL; t=t->next) 
+       if (t->data > t->next->data) 
+            return 0; 
+            
+    return 1; 
+} 
+
 struct Node * insertatbegin(struct Node *head){
     struct Node * ptr = (struct Node *) malloc(sizeof(struct Node));
     int data;
