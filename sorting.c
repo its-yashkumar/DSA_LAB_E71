@@ -233,9 +233,9 @@ void quickSort(int n, int inpArr[])
       makeDecArr(); 
       printArr(decArr, MAXNUM); 
       makeRandArr(); 
-    printArr(randArr, MAXNUM); 
-    printf(" Sorting algo |\tBest Case\tWorst Case\tAverage Case\n"); 
-    printf("----------------|-------------------------------------------------\n"); { 
+      printArr(randArr, MAXNUM); 
+      printf(" Sorting algo |\tBest Case\tWorst Case\tAverage Case\n"); 
+      printf("----------------|-------------------------------------------------\n"); { 
         // bubble sort 
         printf("Bubble Sort |\t"); 
         // Best case 
