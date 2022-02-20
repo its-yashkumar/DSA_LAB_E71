@@ -42,8 +42,8 @@ void printMatrix(int matrix[][nV]) {
 }
 
 int main() {
-  int graph[nV][nV] = {{0, 10, INF, 5},
-             {2, 0, INF, 4},
+  int graph[nV][nV] = {{0, 10, INF,3,INF,INF,INF },
+             {10, 0, 2, INF,},
              {INF, 1, 0, INF},
              {INF, INF, 2, 0}};
   floydWarshall(graph);
